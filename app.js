@@ -37,6 +37,7 @@ app.set('views', path.join(__dirname, './config/views')); // Set the path to you
 app.set('view engine', 'hbs'); // Set the view engine to 'hbs'
 
 const port = process.env.PORT || 3000;
+app.use(express.static(path.join(__dirname,"public")))
 app.use('/',require('./routes/index.js'))
 
 app.listen(port, () => {
