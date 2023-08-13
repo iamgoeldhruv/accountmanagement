@@ -1,0 +1,1 @@
+hbs.partialsDir = path.join(__dirname, 'partials');

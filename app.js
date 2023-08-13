@@ -22,13 +22,18 @@ const path = require('path'); // Import the 'path' module for path manipulation
 const connectdb = require('./config/db.js');
 const dotenv = require('dotenv');
 const morgan = require('morgan'); // Import 'morgan' for logging
+const hbs=require('hbs')
 
 
 const passport=require('passport');
 
+
 dotenv.config({ path: './config/config.env' });
 
 connectdb();
+hbs.registerPartials(path.join(__dirname, './config/partials'));
+
+
 require('./config/passport.js')(passport)
 const app = express();
 
@@ -36,6 +41,9 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
+
+
+
 
 
 app.set('views', path.join(__dirname, './config/views')); // Set the path to your views directory
